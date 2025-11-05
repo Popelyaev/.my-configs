@@ -1,0 +1,9 @@
+theme = catppuccin-mocha.conf
+
+font-family="FiraCode Nerd Font Mono"
+font-size=14
+
+cursor-style = block
+
+window-decoration = none
+cursor-style-blink = false 
