@@ -1,0 +1,9 @@
+{
+    "Добавление изображения через стили в html": {
+        "prefix": "w-style-background-image",
+        "body": [
+            "style=\"background-image: url('http://tomsk-site.ru/images/image-2.png')\""
+        ],
+        "description": ""
+    }
+}
