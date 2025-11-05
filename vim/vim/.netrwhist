@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =1
+let g:netrw_dirhistcnt =2
+let g:netrw_dirhist_2='/Users/mariapopelaeva/.my-configs/ghostty'
 let g:netrw_dirhist_1='/Users/mariapopelaeva/Downloads/dark-interior-lesson/assets'
 let g:netrw_dirhist_0='/Users/mariapopelaeva/Downloads/dark-interior-lesson'
 let g:netrw_dirhist_9='/Users/mariapopelaeva/Downloads'
@@ -9,4 +10,3 @@ let g:netrw_dirhist_6='/Users/mariapopelaeva/work/project/Гармония гл�
 let g:netrw_dirhist_5='/Users/mariapopelaeva/work/project/Гармония гладкости/gulp-project/app'
 let g:netrw_dirhist_4='/Users/mariapopelaeva/work/project/Гармония гладкости/gulp-project'
 let g:netrw_dirhist_3='/Users/mariapopelaeva/.Trash'
-let g:netrw_dirhist_2='/Users/mariapopelaeva'
