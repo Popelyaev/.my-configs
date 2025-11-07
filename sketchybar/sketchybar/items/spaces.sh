@@ -8,14 +8,14 @@ for sid in "${SPACE_SIDS[@]}"; do
 		icon=$sid \
 		icon.font="FiraCode Nerd Font:Bold:12.0" \
 		label.font="FiraCode Nerd Font Mono:Bold:20.0" \
-		label.padding_right=40 \
-		label.y_offset=-1 \
+		label.padding_right=12 \
+		label.y_offset=0 \
 		script="$PLUGIN_DIR/space.sh"
 done
 
 sketchybar --add item space_separator left \
 	--set space_separator icon="􀆊" \
-	icon.color=$ACCENT_COLOR \
+	icon.color=$MAUVE \
 	icon.padding_left=4 \
 	label.drawing=off \
 	background.drawing=off \
