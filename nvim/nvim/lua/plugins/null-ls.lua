@@ -16,7 +16,7 @@ return {
 						},
 					}),
 					null_ls.builtins.formatting.black, -- форматтер Black
-					null_ls.builtins.formatting.autopep8, -- форматтер autopep8
+					-- null_ls.builtins.formatting.autopep8, -- форматтер autopep8
 					null_ls.builtins.formatting.yapf, -- форматтер yapf
 				},
 			})

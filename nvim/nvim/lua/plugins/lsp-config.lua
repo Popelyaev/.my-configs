@@ -36,56 +36,43 @@ return {
 			})
 		end,
 	},
+{
+    "neovim/nvim-lspconfig",
+    config = function()
+        local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-	{
-		"neovim/nvim-lspconfig",
-		config = function()
-			local lspconfig = require("lspconfig")
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+        -- Список серверов и их параметры
+        local servers = {
+            basedpyright = {},
+            lua_ls = {},
+            powershell_es = {},
+            intelephense = {},
+            ts_ls = {},
+            eslint = {},
+            cssls = {},
+            jsonls = {},
+            html = {
+                filetypes = { "html", "php" },
+            },
+            emmet_language_server = {
+                filetypes = { "html", "php" },
+            },
+        }
 
-			lspconfig.basedpyright.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.lua_ls.setup({
-				capabilities = capabilities,
-			})
+        -- Регистрируем конфигурации
+        for name, config in pairs(servers) do
+            config.capabilities = capabilities
+            vim.lsp.config[name] = config
+        end
 
-			lspconfig.powershell_es.setup({
-				capabilities = capabilities,
-			})
+        -- Включаем все LSP
+        for name, _ in pairs(servers) do
+            vim.lsp.enable(name)
+        end
 
-			lspconfig.intelephense.setup({
-				capabilities = capabilities,
-			})
-
-			lspconfig.ts_ls.setup({
-				capabilities = capabilities,
-			})
-
-			lspconfig.eslint.setup({
-				capabilities = capabilities,
-			})
-
-			lspconfig.emmet_language_server.setup({
-				filetypes = { "html", "php" },
-				capabilities = capabilities,
-			})
-
-			lspconfig.cssls.setup({
-				capabilities = capabilities,
-			})
-
-			lspconfig.html.setup({
-				filetypes = { "html", "php" },
-				capabilities = capabilities,
-			})
-
-			lspconfig.jsonls.setup({
-				capabilities = capabilities,
-			})
-
-			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-			vim.keymap.set({ "n" }, "<leader>ca", vim.lsp.buf.code_action, {})
-		end,
-	},
+        -- Горячие клавиши
+        vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover info" })
+        vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
+    end,
+}
 }

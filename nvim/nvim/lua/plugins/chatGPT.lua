@@ -1,4 +1,4 @@
--- return {
+return {
 --    "jackMort/ChatGPT.nvim",
 --    event = "VeryLazy",
 --    config = function()
@@ -13,4 +13,4 @@
 --       "folke/trouble.nvim",
 --       "nvim-telescope/telescope.nvim",
 --    },
--- }
+}
