@@ -2,6 +2,6 @@
 
 sketchybar --add item disk right \
            --set disk update_freq=2 \
-                      icon=  \
+                      icon=  \
                       script="$PLUGIN_DIR/disk.sh"
 
