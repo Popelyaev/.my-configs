@@ -110,13 +110,14 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+#
 
 # Переменные 
 SPRINTHOST="a0791978@141.8.192.58"
 BEGET_VPS="root@62.217.178.7"
 
 # # Мои подключения
-for file in ~/.myzsh/**/*.zsh; do
+for file in ~/.private/**/*; do
   source "$file"
 done
 
@@ -150,25 +151,6 @@ newthemezsh() {
   p10k configure
 }
 
-
-
-# ==============================  
-# Алиасы 
-# ==============================  
-
-alias l="eza --group-directories-first --git --tree --icons --level=1"
-alias ll="eza --group-directories-first  --git  --tree -l --icons --level=1"
-alias la="eza --group-directories-first  --git  --tree -la --icons --level=1"
-
-alias inv='nvim $(fzf -m --preview="bat --color=always {}")'
-
-alias ncdu='ncdu --color=dark'
-
-alias __vpn1="scutil --nc start 'VmVApp'"
-alias __vpn0="scutil --nc stop 'VmVApp'"
-
-alias __googlesheetmoney="open 'https://docs.google.com/spreadsheets/d/1GwkgPXEuBy_Js1tSaBIDLb6IOE7pU_FP47e5w-zJYDA/edit?gid=0#gid=0'"
-
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
@@ -178,3 +160,63 @@ function y() {
 	rm -f -- "$tmp"
 }
 
+__ip() {
+    echo "VPN IP:    |  $(curl -s ifconfig.me)" 
+    echo "Родной IP: |  $(curl -s --interface en0 https://ifconfig.me )"
+}
+
+speedcheck() {
+  result=$(speedtest --simple)
+  ping=$(echo "$result" | grep "Ping" | awk '{print $2 " " $3}')
+  download=$(echo "$result" | grep "Download" | awk '{print $2 " " $3}')
+  upload=$(echo "$result" | grep "Upload" | awk '{print $2 " " $3}')
+  echo "Ping: $ping | Download: $download | Upload: $upload"
+}
+
+allsizeapp() {
+    echo "-- Само приложение --"  
+    du -sh /Applications/$1.app 
+    echo "\n"
+    echo "-- User Library --"  
+    find ~/Library -iname "*$1*" 2>/dev/null -exec du -sh {} \;
+}
+
+brewsizeformulae() {
+    echo "-- Само приложение $1 --"  
+    du -sh $(brew --prefix)/Cellar/$1/*
+    echo "\n"
+    echo "-- Его зависимости --"  
+    du -sh $(brew --prefix)/Cellar/$1/*
+}
+
+
+# ==============================  
+# Алиасы 
+# ==============================  
+
+alias l="eza --group-directories-first --git --tree --icons --level=1"
+alias ll="eza --group-directories-first  --git  --tree -l --icons --level=1"
+alias la="eza --group-directories-first  --git  --tree -la --icons --level=1"
+alias ps1-abe="open https://gam.onl/psx/oddworld-abe-oddysee.html#game"
+alias sprinthost="ssh a0791978@141.8.192.58"
+alias inv='nvim $(fzf -m --preview="bat --color=always {}")'
+
+alias ncdu='ncdu --color=dark'
+
+alias __vpn1="scutil --nc start 'VmVApp'"
+alias __vpn0="scutil --nc stop 'VmVApp'"
+
+alias __googlesheetmoney="open 'https://docs.google.com/spreadsheets/d/1GwkgPXEuBy_Js1tSaBIDLb6IOE7pU_FP47e5w-zJYDA/edit?gid=0#gid=0'"
+alias y.metrika="open 'https://metrika.yandex.ru'"
+alias f.garmonya="open 'https://docs.google.com/spreadsheets/d/191erh3kSXClVJkRLB0tIUBwJcFLAkpsCMn9IUDXYQmc/edit?gid=1101889799#gid=1101889799'"
+
+
+alias newuser="sudo sysadminctl -addUser evgenypopelaev -fullName \"Евгений Попеляев\" -password qwerty"
+alias deleteuser="sudo sysadminctl -deleteUser evgenypopelaev -removeHomeDirectory"
+alias szsh="source ~/.zshrc"
+alias dud="du -sh"
+alias dua="du -h"
+alias shlvl="echo Shell уровень - $SHLVL"
+
+
+source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
